@@ -5,11 +5,11 @@ from xhs import XhsClient, DataFetchError, help
 from playwright.sync_api import sync_playwright
 
 
-def sign(uri, data=None, a1="", web_session=""):
+def sign(uri, data=None, a1="18b838aed62qz1gg0j8pzo0vj9b8onj4g3jux0gfc50000326500", web_session=""):
     for _ in range(10):
         try:
             with sync_playwright() as playwright:
-                stealth_js_path = "/Users/reajason/ReaJason/xhs/tests/stealth.min.js"
+                stealth_js_path = "stealth.min.js"
                 chromium = playwright.chromium
 
                 # 如果一直失败可尝试设置成 False 让其打开浏览器，适当添加 sleep 可查看浏览器状态
@@ -37,7 +37,7 @@ def sign(uri, data=None, a1="", web_session=""):
 
 
 if __name__ == '__main__':
-    cookie = "please get cookie from your website"
+    cookie = "abRequestId=70fe05b7-70b2-56db-a0f1-f2fa8beb2df5; webBuild=3.13.6; xsecappid=xhs-pc-web; a1=18b838aed62qz1gg0j8pzo0vj9b8onj4g3jux0gfc50000326500; webId=c35bdbe2d22b0cb90392c668e5c6dfde; gid=yYDYqY0iJDkWyYDYqY0dfq8kKJAuykk8VYUuViSl8hVjD728YlIV4C888qJK2888K4fKjqY2; web_session=040069b10e0d7756e6ac522d75374ba1bc63e1; unread={%22ub%22:%226537b527000000001e02220f%22%2C%22ue%22:%22653ba5070000000025008fa3%22%2C%22uc%22:27}; websectiga=2845367ec3848418062e761c09db7caf0e8b79d132ccdd1a4f8e64a11d0cac0d; acw_tc=f807dbafb742eee8331e8866e25f841cfcf167baa6ac774b76ee7c873f2f998a; sec_poison_id=d83a2b72-25cd-4157-bffa-83f840e2fc91"
 
     xhs_client = XhsClient(cookie, sign=sign)
     print(datetime.datetime.now())
